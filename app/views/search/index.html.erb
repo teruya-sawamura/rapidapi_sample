@@ -1,2 +1,20 @@
 <h1>Search#index</h1>
-<%= @label %>: <%= @quantity %><%= @unit %>
+
+<div style="margin-bottom: 50px;">
+  <%= form_with url: root_path, method: :get, local: true do |form| %>
+    <%= form.text_field :search %>
+    <%= form.submit '検索', name: nil %>
+  <% end %>
+</div>
+
+<% if params[:search].present? %>
+
+  calories : <%= @result["calories"]%> kcal
+  Protein: <%= @result["totalNutrients"]["PROCNT"]["quantity"] %> g
+
+<% else %>
+
+  <p>検索してね！</p>
+
+<% end %>
+
