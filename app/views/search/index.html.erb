@@ -2,15 +2,15 @@
 
 <div style="margin-bottom: 50px;">
   <%= form_with url: root_path, method: :get, local: true do |form| %>
-    <%= form.text_field :search %>
+    <%= form.text_field :translation %>
     <%= form.submit '検索', name: nil %>
   <% end %>
 </div>
 
-<% if params[:search].present? %>
+<% if params[:translation].present? %>
 
-  calories : <%= @result["calories"]%> kcal
-  Protein: <%= @result["totalNutrients"]["PROCNT"]["quantity"] %> g
+  Calories : <%= @result1["calories"] / @result1["totalWeight"] * 100 %> kcal
+  Protein: <%= @result1["totalNutrients"]["PROCNT"]["quantity"] / @result1["totalWeight"] * 100 %> g
 
 <% else %>
 
